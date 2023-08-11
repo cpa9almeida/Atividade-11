@@ -14,18 +14,14 @@ app.get("/", (req, res) => {        // Cria a rota da raiz do projeto
   console.log("Rota / solicitada");
 });
 
-app.get("/usuario/:id", async (req, res) => {
-  console.log("Rota GET /usuario solicitada");
+app.get("/usuario/", async (req, res) => {
+  console.log("Rota GET /usuarios solicitada");
   try {
-    const usuario = await selectUsuario();
-    res.json(usuario);
+    const usuarios = await selectUsuarios();
+    res.json(usuarios);
   } catch (error) {
     res.status(error.status || 500).json({ message: error.message || "Erro!" });
   }
-});
-
-app.listen(port, () => {            // Um socket para "escutar" as requisições
-  console.log(`Serviço escutando na porta:  ${port}`);
 });
 
 //index.js
@@ -40,7 +36,6 @@ app.get("/usuario/:id", async (req, res) => {
   }
 });
 
-app.use(express.json());
 
 app.post("/usuario", async (req, res) => {
   console.log("Rota POST /usuario solicitada");
