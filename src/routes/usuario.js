@@ -10,6 +10,7 @@ import {
 
 const router = Router();
 
+
 router.get("/usuario", async (req, res) => {
   console.log("Rota GET /usuario solicitada");
   try {
